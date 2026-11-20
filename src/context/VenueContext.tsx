@@ -74,16 +74,16 @@ export const defaultVenue: VenueData = {
   state: "Bihar",
   country: "India",
   tagline: "A CELEBRATION WORTH REMEMBERING",
-  phone: "+91 99999 99999",
-  phone2: "+91 99999 99999",
-  whatsApp: "+91 99999 99999",
-  email: "enquiries@themonarchgarden.com",
+  phone: "+91 9934 926627",
+  phone2: "+91 77177 00484",
+  whatsApp: "+91 77177 00484",
+  email: "themonarchgarden@gmail.com",
   fullAddress: DEFAULT_FULL_ADDRESS,
   landmark: "Opposite premium residential corridors, 2 minutes from Bypass Interchange",
   googleMaps: buildGoogleMapsUrl(DEFAULT_FULL_ADDRESS, "The Monarch Garden", "Muzaffarpur"),
   googleMapsEmbedUrl: buildGoogleMapsEmbedUrl(DEFAULT_FULL_ADDRESS, "The Monarch Garden", "Muzaffarpur"),
   googleMapsDirectionsUrl: buildGoogleMapsUrl(DEFAULT_FULL_ADDRESS, "The Monarch Garden", "Muzaffarpur"),
-  instagram: "https://www.instagram.com/themonarchgarden",
+  instagram: "https://www.instagram.com/the_monarch_garden",
   facebook: "https://facebook.com",
   youtube: "https://youtube.com",
   linkedin: "",
@@ -139,17 +139,25 @@ export const VenueProvider: React.FC<{ children: React.ReactNode }> = ({ childre
             ? extractIframeSrc(parsed.googleMapsEmbedUrl)
             : fallbackEmbedUrl;
 
+        const resolvedPhone = parsed.phone && parsed.phone !== "+91 99999 99999" ? parsed.phone : defaultVenue.phone;
+        const resolvedPhone2 = parsed.phone2 && parsed.phone2 !== "+91 99999 99999" ? parsed.phone2 : defaultVenue.phone2;
+        const resolvedWhatsApp = parsed.whatsApp && parsed.whatsApp !== "+91 99999 99999" ? parsed.whatsApp : defaultVenue.whatsApp;
+        const resolvedEmail = parsed.email && parsed.email !== "enquiries@themonarchgarden.com" ? parsed.email : defaultVenue.email;
+        const resolvedInstagram = parsed.instagram && parsed.instagram !== "https://www.instagram.com/themonarchgarden" ? parsed.instagram : defaultVenue.instagram;
+
         const merged: VenueData = {
           ...defaultVenue,
           ...parsed,
+          phone: resolvedPhone,
+          phone2: resolvedPhone2,
+          whatsApp: resolvedWhatsApp,
+          email: resolvedEmail,
           fullAddress: resolvedAddress,
           themePrimaryColor: defaultVenue.themePrimaryColor,
           themeDarkColor: defaultVenue.themeDarkColor,
           themeChampagneGold: defaultVenue.themeChampagneGold,
           themeBgColor: defaultVenue.themeBgColor,
-          phone2: parsed.phone2 || parsed.whatsApp || defaultVenue.phone2,
-          whatsApp: parsed.phone2 || parsed.whatsApp || defaultVenue.whatsApp,
-          instagram: parsed.instagram !== undefined ? parsed.instagram : defaultVenue.instagram,
+          instagram: resolvedInstagram,
           facebook: parsed.facebook !== undefined ? parsed.facebook : defaultVenue.facebook,
           youtube: parsed.youtube !== undefined ? parsed.youtube : defaultVenue.youtube,
           linkedin: parsed.linkedin !== undefined ? parsed.linkedin : defaultVenue.linkedin,
