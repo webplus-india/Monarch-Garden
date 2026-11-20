@@ -1,0 +1,385 @@
+@import "tailwindcss";
+
+/* --- High Performance Skeleton Shimmer Animation --- */
+@keyframes skeleton-shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.animate-skeleton-shimmer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.4) 20%,
+    rgba(245, 241, 234, 0.75) 50%,
+    rgba(255, 255, 255, 0.4) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  animation: skeleton-shimmer 1.8s infinite ease-in-out;
+}
+
+.dark .animate-skeleton-shimmer,
+.skeleton-shimmer-dark .animate-skeleton-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.08) 20%,
+    rgba(177, 138, 74, 0.22) 50%,
+    rgba(255, 255, 255, 0.08) 80%,
+    rgba(255, 255, 255, 0) 100%
+  );
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-skeleton-shimmer {
+    animation: none;
+    opacity: 0.4;
+  }
+}
+
+@layer utilities {
+  .font-serif-editorial {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+  }
+  .font-sans-premium {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+
+  /* --- Global Typography System Specifications --- */
+
+  /* Section Headings: 32px-34px on mobile, 46px-48px on desktop */
+  .site-section-heading,
+  .celebration-section-title-fluid {
+    font-size: clamp(2rem, 1.7rem + 1.25vw, 3rem); /* 32px on mobile fluidly scaling to 48px on desktop */
+    line-height: 1.15;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+    letter-spacing: 0.015em;
+  }
+
+  /* Introductory paragraphs below section headings: 16px on mobile, 18px on desktop */
+  .site-section-description {
+    font-size: 1rem; /* 16px on mobile */
+    line-height: 1.6;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  @media (min-width: 768px) {
+    .site-section-description {
+      font-size: 1.125rem; /* Exactly 18px on desktop */
+    }
+  }
+
+  /* Card Titles: 23px-24px on mobile, 28px-30px on desktop */
+  .site-card-title,
+  .celebration-title-fluid {
+    font-size: clamp(1.4375rem, 1.3rem + 0.6vw, 1.875rem); /* 23px-24px on mobile scaling to 30px on desktop */
+    line-height: 1.2;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-weight: 500;
+  }
+
+  /* Card Descriptions: 16px on mobile, 16.5px on desktop */
+  .site-card-description,
+  .celebration-desc-fluid {
+    font-size: 1rem; /* Exactly 16px on mobile */
+    line-height: 1.55;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  @media (min-width: 768px) {
+    .site-card-description,
+    .celebration-desc-fluid {
+      font-size: 1.03125rem; /* 16.5px on desktop */
+    }
+  }
+
+  /* Section Eyebrow Labels: 12px on mobile, 12.5px on desktop */
+  .site-section-eyebrow {
+    font-size: 0.75rem; /* Exactly 12px on mobile */
+    letter-spacing: 0.22em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .site-section-eyebrow {
+      font-size: 0.78125rem; /* 12.5px on desktop */
+      letter-spacing: 0.2em;
+    }
+  }
+
+  /* Card Eyebrow Labels: 12px on mobile, 12.5px on desktop */
+  .site-card-eyebrow,
+  .celebration-eyebrow-fluid {
+    font-size: 0.75rem; /* Exactly 12px on mobile */
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .site-card-eyebrow,
+    .celebration-eyebrow-fluid {
+      font-size: 0.78125rem; /* 12.5px on desktop */
+      letter-spacing: 0.12em;
+    }
+  }
+
+  /* Experience item headings: 17px on mobile, 18px on desktop */
+  .experience-feature-title-fluid {
+    font-size: clamp(1.0625rem, 1.03rem + 0.15vw, 1.125rem); /* 17px on mobile to 18px on desktop */
+    letter-spacing: 0.12em;
+    font-weight: 700;
+  }
+
+  /* Experience item descriptions: 16px on mobile, 16.5px on desktop */
+  .experience-feature-desc-fluid {
+    font-size: 1rem; /* 16px on mobile */
+    line-height: 1.55;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+  @media (min-width: 768px) {
+    .experience-feature-desc-fluid {
+      font-size: 1.03125rem; /* 16.5px on desktop */
+    }
+  }
+
+  /* Experience Section - Desktop Font Size Refinement */
+  @media (min-width: 1024px) {
+    #experiences #experiences-features-grid-desktop p {
+      font-size: 0.9375rem !important; /* 15px (1px decrease on desktop) */
+    }
+    #experiences #experiences-features-grid-desktop h3 {
+      font-size: 0.8125rem !important; /* 13px (1px decrease on desktop) */
+    }
+  }
+
+  /* Spaces Section - Desktop Refinement */
+  @media (min-width: 1024px) {
+    #spaces .celebration-desc-fluid {
+      font-size: 1rem !important; /* 16px */
+      line-height: 1.6 !important;
+    }
+  }
+
+  /* Celebrations Section - Desktop Title Size (26px) */
+  @media (min-width: 1024px) {
+    #celebrations .celebration-title-fluid,
+    .celebration-title-fluid {
+      font-size: 1.625rem !important; /* 26px on desktop */
+    }
+  }
+
+  /* Space AREA and CAPACITY labels: 12px mobile, 12.5px desktop */
+  .space-meta-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+  @media (min-width: 768px) {
+    .space-meta-label {
+      font-size: 0.78125rem;
+      letter-spacing: 0.12em;
+    }
+  }
+
+  /* Space AREA and CAPACITY values: 15px mobile, 16.5px desktop */
+  .space-meta-value {
+    font-size: clamp(0.9375rem, 0.9rem + 0.15vw, 1rem);
+    font-weight: 600;
+  }
+  @media (min-width: 768px) {
+    .space-meta-value {
+      font-size: 1.03125rem; /* 16.5px on desktop */
+    }
+  }
+
+  /* Form labels: 14px on mobile, 14px-15px on desktop */
+  .site-form-label {
+    font-size: clamp(0.875rem, 0.85rem + 0.1vw, 0.9375rem); /* 14px on mobile to 15px on desktop */
+    font-weight: 500;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+/* Global Text Selection Styling — Light & Ivory Sections Default */
+::selection {
+  background-color: rgba(27, 67, 50, 0.18) !important;
+  color: inherit !important;
+}
+
+::-moz-selection {
+  background-color: rgba(27, 67, 50, 0.18) !important;
+  color: inherit !important;
+}
+
+/* Dark Sections, Dark Overlays & Footer High-Contrast Selection Styling */
+#hero ::selection,
+footer ::selection,
+#footer ::selection,
+.bg-\[\#153426\] ::selection,
+.bg-\[\#1B4332\] ::selection,
+.bg-black ::selection,
+.bg-black\/40 ::selection,
+.bg-black\/50 ::selection,
+.bg-black\/60 ::selection,
+.bg-black\/70 ::selection,
+.bg-black\/80 ::selection,
+.bg-neutral-900 ::selection,
+.bg-neutral-950 ::selection,
+.text-white ::selection,
+.text-\[\#FAF7F2\] ::selection,
+.text-\[\#E7E5DD\] ::selection {
+  background-color: rgba(201, 162, 39, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+#hero ::-moz-selection,
+footer ::-moz-selection,
+#footer ::-moz-selection,
+.bg-\[\#153426\] ::-moz-selection,
+.bg-\[\#1B4332\] ::-moz-selection,
+.bg-black ::-moz-selection,
+.bg-black\/40 ::-moz-selection,
+.bg-black\/50 ::-moz-selection,
+.bg-black\/60 ::-moz-selection,
+.bg-black\/70 ::-moz-selection,
+.bg-black\/80 ::-moz-selection,
+.bg-neutral-900 ::-moz-selection,
+.bg-neutral-950 ::-moz-selection,
+.text-white ::-moz-selection,
+.text-\[\#FAF7F2\] ::-moz-selection,
+.text-\[\#E7E5DD\] ::-moz-selection {
+  background-color: rgba(201, 162, 39, 0.4) !important;
+  color: #FFFFFF !important;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--theme-bg, #FAF7F2); /* Main Warm White */
+  color: var(--theme-charcoal, #292B27); /* Primary Text */
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Custom scrollbar matching brand colors */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--theme-bg, #FAF7F2);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--theme-primary, #1B4332);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--theme-dark, #153426);
+}
+
+/* Refined custom transitions */
+.smooth-transition {
+  transition: all 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.pb-safe {
+  padding-bottom: max(16px, env(safe-area-inset-bottom, 16px));
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top, 0px);
+}
+
+/* Editorial Wedding Journal Card Hover Interactions (Desktop / Fine Pointer) */
+.journal-card-img {
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journal-card-title {
+  transition: color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journal-card-arrow {
+  transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.journal-card-btn {
+  transition: background-color 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms cubic-bezier(0.16, 1, 0.3, 1), color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .journal-card-hover {
+    transition: transform 300ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 300ms cubic-bezier(0.16, 1, 0.3, 1), border-color 300ms cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .journal-card-hover:hover {
+    border-color: color-mix(in srgb, var(--theme-gold, #C9A227) 50%, transparent) !important;
+    box-shadow: 0 14px 32px -10px rgba(27, 67, 50, 0.12), 0 4px 12px -2px rgba(41, 43, 39, 0.04) !important;
+    transform: translateY(-2px);
+  }
+
+  .journal-card-hover:hover .journal-card-img {
+    transform: scale(1.04) !important;
+  }
+
+  .journal-card-hover:hover .journal-card-title {
+    color: var(--theme-primary, #1B4332) !important;
+  }
+
+  .journal-card-hover:hover .journal-card-btn {
+    background-color: var(--theme-primary, #1B4332) !important;
+    border-color: var(--theme-primary, #1B4332) !important;
+    color: var(--theme-bg, #FAF7F2) !important;
+  }
+
+  .journal-card-hover:hover .journal-card-arrow {
+    transform: translate(3px, -3px) !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .journal-card-hover,
+  .journal-card-img,
+  .journal-card-title,
+  .journal-card-btn,
+  .journal-card-arrow {
+    transition: none !important;
+    transform: none !important;
+  }
+}
+
+/* Gallery Luxury Soft-Focus Hover Animation (Desktop Fine Pointer) */
+.gallery-hover-img {
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+  transform: scale(1);
+  filter: brightness(1);
+  will-change: transform, filter;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  /* When hovering over gallery grid, softly reduce brightness of all images to 90% */
+  #gallery-grid-container:hover .gallery-hover-img {
+    filter: brightness(0.90);
+  }
+
+  /* Hovered image scales to 1.04 and stays in 100% full natural color */
+  #gallery-grid-container .group:hover .gallery-hover-img {
+    transform: scale(1.04);
+    filter: brightness(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .gallery-hover-img {
+    transition: none !important;
+    transform: none !important;
+    filter: none !important;
+  }
+}
+
+
