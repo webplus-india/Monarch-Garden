@@ -338,12 +338,12 @@ export default function Header({ onOpenEnquiry, activeSection, isScrolled }: Hea
                   <div className="flex flex-col gap-2 md:gap-2.5 font-sans-premium font-medium text-[13.5px] md:text-[14.5px]">
                     <div className="flex flex-col gap-1">
                       <a
-                        href={`tel:${(venue.phone || '+91 9934 926627').replace(/[^+\d]/g, '')}`}
+                        href={`tel:${(venue.phone || '+91 99349 26627').replace(/[^+\d]/g, '')}`}
                         className="inline-flex items-center gap-2.5 text-[#FAF7F2]/85 hover:text-[#C9A227] transition-colors duration-250 py-0.5 group w-fit max-w-full"
                         aria-label={`Call ${venue.venueName}`}
                       >
                         <Phone className="w-3.5 h-3.5 text-[#C9A227] shrink-0 group-hover:scale-105 transition-transform duration-200" strokeWidth={1.8} />
-                        <span className="tracking-wider">{venue.phone || "+91 9934 926627"}</span>
+                        <span className="tracking-wider">{venue.phone || "+91 99349 26627"}</span>
                       </a>
                       {venue.phone2 && venue.phone2.trim() && venue.phone2.trim() !== venue.phone.trim() && (
                         <a

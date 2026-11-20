@@ -74,7 +74,7 @@ export const defaultVenue: VenueData = {
   state: "Bihar",
   country: "India",
   tagline: "A CELEBRATION WORTH REMEMBERING",
-  phone: "+91 9934 926627",
+  phone: "+91 99349 26627",
   phone2: "+91 77177 00484",
   whatsApp: "+91 77177 00484",
   email: "themonarchgarden@gmail.com",
